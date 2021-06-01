@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<bool> canEat(vector<int>& candiesCount, vector<vector<int>>& queries) {
+    vector<bool> answer(queries.size(),false);
+    vector<long> days = {0};
+     long day =0;
+     for(int i = 0 ; i<candiesCount.size() ; i++)
+     {    
+        day = day + candiesCount[i];
+        days.push_back(day);
+     }
+     //days.push_back( days[candiesCount.size()-1] + candiesCount[candiesCount.size()-1]);
+
+    for(int i = 0 ; i < queries.size();i++   )
+        {
+       
+if(queries[i][1] < days[queries[i][0]+1] &&days[queries[i][0]]< (long) (queries[i][1]+1)*queries[i][2]){
+       answer[i] = true;
+        }
+     }
+  return answer;
+    }
+};
